@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Giveaway;
 use App\Models\Participant;
 use Illuminate\Http\Request;
 
@@ -12,11 +13,10 @@ class ParticipantController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Giveaway $giveaway)
     {
-        return view('participants.index', [
-            'participants' => Participant::latest()->get()
-        ]);
+        $participants = Participant::get()->where('giveaway_id', $giveaway->id);
+        return view('participants.index', compact('giveaway', 'participants'));
     }
 
     /**
@@ -24,8 +24,9 @@ class ParticipantController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Giveaway $giveaway)
     {
+        return view('participants.create', compact('giveaway'));
     }
 
     /**
@@ -34,9 +35,11 @@ class ParticipantController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Giveaway $giveaway)
     {
-        //
+        Participant::create($this->validateParticipant());
+
+        return redirect(route('participants.index', $giveaway));
     }
 
     /**
@@ -45,9 +48,9 @@ class ParticipantController extends Controller
      * @param  \App\Models\Participant  $participant
      * @return \Illuminate\Http\Response
      */
-    public function show(Participant $participant)
+    public function show(Giveaway $giveaway, Participant $participant)
     {
-        //
+        return view('participants.show', compact('giveaway', 'participant'));
     }
 
     /**
@@ -56,9 +59,9 @@ class ParticipantController extends Controller
      * @param  \App\Models\Participant  $participant
      * @return \Illuminate\Http\Response
      */
-    public function edit(Participant $participant)
+    public function edit(Giveaway $giveaway, Participant $participant)
     {
-        //
+        return view('participants.edit', compact('giveaway', 'participant'));
     }
 
     /**
@@ -68,9 +71,11 @@ class ParticipantController extends Controller
      * @param  \App\Models\Participant  $participant
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Participant $participant)
+    public function update(Giveaway $giveaway, Participant $participant)
     {
-        //
+        $participant->update($this->validateParticipant());
+
+        return redirect($participant->path());
     }
 
     /**
@@ -79,8 +84,18 @@ class ParticipantController extends Controller
      * @param  \App\Models\Participant  $participant
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Participant $participant)
+    public function destroy(Giveaway $giveaway, Participant $participant)
     {
-        //
+        Participant::destroy($participant);
+
+        return redirect('participants.index');
+    }
+
+    protected function validateParticipant()
+    {
+        return request()->validate([
+            'insta_name' => 'required',
+            'giveaway_id' => 'required'
+        ]);
     }
 }

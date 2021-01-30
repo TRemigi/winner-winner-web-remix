@@ -49,7 +49,7 @@ class GiveawayController extends Controller
      */
     public function show(Giveaway $giveaway)
     {
-        return $giveaway;
+        return view('giveaways.show', compact('giveaway'));
     }
 
     /**
@@ -85,7 +85,9 @@ class GiveawayController extends Controller
      */
     public function destroy(Giveaway $giveaway)
     {
-        //
+        Giveaway::destroy($giveaway);
+
+        return redirect('giveaways.index');
     }
 
     protected function validateGiveaway()

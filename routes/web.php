@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GiveawayController;
 use App\Http\Controllers\ParticipantController;
-use App\Models\Giveaway;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,24 +19,34 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// GIVEAWAY ROUTES
 // show all giveaways
 Route::get('/giveaways', [GiveawayController::class, 'index'])->name('giveaways.index');
-
-// CREATE
 // show form to create new giveaway
-Route::post('/giveaways', [GiveawayController::class, 'store'])->name('giveaways.store');
 Route::get('/giveaways/create', [GiveawayController::class, 'create'])->name('giveaways.create');
-// show form to add new participants (giveaway will be pulled from wildcard)
-Route::get('/giveaways/{giveaway}/particpants', [ParticipantController::class, 'create'])->name('participants.create');
-
-// READ
+// persist new giveaway
+Route::post('/giveaways', [GiveawayController::class, 'store'])->name('giveaways.store');
 // show specific giveaway
 Route::get('/giveaways/{giveaway}', [GiveawayController::class, 'show'])->name('giveaways.show');
-
-// UPDATE
 // show form to edit giveaway
 Route::get('/giveaways/{giveaway}/edit', [GiveawayController::class, 'edit'])->name('giveaways.edit');
+// persist updated giveaway
 Route::put('/giveaways/{giveaway}', [GiveawayController::class, 'update'])->name('giveaways.update');
+// delete giveaway
+Route::delete('/giveaways/{giveaway}', [GiveawayController::class, 'destroy'])->name('giveaways.destroy');
 
-
-// DELETE
+// PARTICIPANT ROUTES
+// show all giveaway participants
+Route::get('/giveaways/{giveaway}/participants', [ParticipantController::class, 'index'])->name('participants.index');
+// show form to add new participants (giveaway will be pulled from wildcard)
+Route::get('/giveaways/{giveaway}/participants/create', [ParticipantController::class, 'create'])->name('participants.create');
+// persist new participants
+Route::post('/giveaways/{giveaway}/participants', [ParticipantController::class, 'store'])->name('participants.store');
+// show specific participant
+Route::get('/giveaways/{giveaway}/participants/{participant}', [ParticipantController::class, 'show'])->name('participants.show');
+// show form to edit participant
+Route::get('/giveaways/{giveaway}/participants/{participant}/edit', [ParticipantController::class, 'edit'])->name('participants.edit');
+// persist updated participant
+Route::put('/giveaways/{giveaway}/participants/{participant}', [ParticipantController::class, 'update'])->name('participants.update');
+// delete participant
+Route::delete('/giveaways/{giveaway}/participants/{participant}', [ParticipantController::class, 'destroy'])->name('participants.destroy');

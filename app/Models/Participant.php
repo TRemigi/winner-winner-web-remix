@@ -9,8 +9,15 @@ class Participant extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['insta_name', 'giveaway_id'];
+
     public function giveaway()
     {
         return $this->belongsTo(Giveaway::class);
+    }
+
+    public function path()
+    {
+        return route('participants.show', ['giveaway' => $this->giveaway_id, 'participant' => $this]);
     }
 }
