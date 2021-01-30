@@ -18,6 +18,10 @@ class CreateGiveawaysTable extends Migration
             $table->timestamps();
             $table->text('name');
             $table->boolean('complete')->default(false);
+
+            // $table->foreign('participant_id')
+            //     ->references('id')
+            //     ->on('participants');
         });
     }
 
