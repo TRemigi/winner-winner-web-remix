@@ -15,8 +15,8 @@ class ParticipantController extends Controller
      */
     public function index(Giveaway $giveaway)
     {
-        $participants = Participant::get()->where('giveaway_id', $giveaway->id);
-        return view('participants.index', compact('giveaway', 'participants'));
+        $participants = Participant::orderBy('insta_name')->get();
+        return view('participants.index', compact('participants'));
     }
 
     /**
@@ -37,9 +37,9 @@ class ParticipantController extends Controller
      */
     public function store(Giveaway $giveaway)
     {
-        Participant::create($this->validateParticipant());
+        $participant = Participant::create($this->validateParticipant());
 
-        return redirect(route('participants.index', $giveaway));
+        return $participant;
     }
 
     /**
@@ -50,7 +50,7 @@ class ParticipantController extends Controller
      */
     public function show(Giveaway $giveaway, Participant $participant)
     {
-        return view('participants.show', compact('giveaway', 'participant'));
+        return redirect(route('participants.index'));
     }
 
     /**
@@ -86,9 +86,9 @@ class ParticipantController extends Controller
      */
     public function destroy(Giveaway $giveaway, Participant $participant)
     {
-        Participant::destroy($participant);
+        $participant->delete();
 
-        return redirect('participants.index');
+        return $participant;
     }
 
     protected function validateParticipant()

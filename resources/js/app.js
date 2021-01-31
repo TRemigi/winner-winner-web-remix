@@ -26,6 +26,7 @@ Vue.component(
 );
 
 Vue.component("home-component", require("./components/Home.vue").default);
+
 Vue.component(
     "giveaway-index",
     require("./components/GiveawayIndex.vue").default,
@@ -33,6 +34,7 @@ Vue.component(
         props: ["giveaways"]
     }
 );
+
 Vue.component(
     "giveaway-create",
     require("./components/GiveawayCreate.vue").default
@@ -50,9 +52,38 @@ Vue.component(
     "giveaway-show",
     require("./components/GiveawayShow.vue").default,
     {
-        props: ["giveaway", "participants"]
+        props: ["giveaway", "participants"],
+        data: {
+            winnerChosen: "",
+            isComplete: ""
+        }
     }
 );
+
+Vue.component(
+    "participant-create",
+    require("./components/ParticipantCreate.vue").default,
+    {
+        props: ["giveaway"]
+    }
+);
+
+Vue.component(
+    "participant-edit",
+    require("./components/ParticipantEdit.vue").default,
+    {
+        props: ["giveaway", "participant"]
+    }
+);
+
+Vue.component(
+    "participant-index",
+    require("./components/ParticipantIndex.vue").default,
+    {
+        props: ["participants"]
+    }
+);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

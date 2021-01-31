@@ -22,7 +22,7 @@
             }
         },
         methods: {
-            createNewGiveaway() {
+            createNewGiveaway: function () {
                 axios.post('/giveaways', {name: this.giveawayName})
                 .then(response => window.location = `/giveaways/${response.data.id}`);
             },

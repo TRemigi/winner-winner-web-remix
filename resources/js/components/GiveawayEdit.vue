@@ -11,6 +11,11 @@
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
+        <div class="row m-1 mt-5">
+            <button v-on:click="deleteGiveaway" class="btn btn-danger cust-btn-delete p-2">
+                Delete Giveaway
+            </button>
+        </div>
     </div>
 </template>
 
@@ -23,10 +28,14 @@
         },
         props: ['giveaway'],
         methods: {
-            editGiveaway() {
+            editGiveaway: function () {
                 axios.put(`/giveaways/${this.giveaway.id}`, {name: this.giveawayName})
                 .then(response => window.location = `/giveaways/${response.data.id}`);
             },
+            deleteGiveaway: function () {
+                axios.delete(`/giveaways/${this.giveaway.id}`)
+                .then(response => window.location = '/giveaways');
+            }
         },
     }
 </script>

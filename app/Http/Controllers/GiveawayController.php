@@ -86,9 +86,9 @@ class GiveawayController extends Controller
      */
     public function destroy(Giveaway $giveaway)
     {
-        Giveaway::destroy($giveaway);
+        $giveaway->delete();
 
-        return redirect('giveaways.index');
+        return $giveaway;
     }
 
     protected function validateGiveaway()

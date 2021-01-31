@@ -37,7 +37,7 @@ Route::delete('/giveaways/{giveaway}', [GiveawayController::class, 'destroy'])->
 
 // PARTICIPANT ROUTES
 // show all giveaway participants
-Route::get('/giveaways/{giveaway}/participants', [ParticipantController::class, 'index'])->name('participants.index');
+Route::get('/participants', [ParticipantController::class, 'index'])->name('participants.index');
 // show form to add new participants (giveaway will be pulled from wildcard)
 Route::get('/giveaways/{giveaway}/participants/create', [ParticipantController::class, 'create'])->name('participants.create');
 // persist new participants
