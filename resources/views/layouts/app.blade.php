@@ -81,6 +81,19 @@
         <main class="container mt-5">
             @yield('content')
         </main>
+
+        <footer class="container m-5 border-top">
+            <div>
+                <div class="row mt-5">
+                    <div class="col-12 d-flex justify-content-center">
+                        &copy; Taylor Remigi 2021
+                    </div>
+                    <div class="col-12 d-flex justify-content-center">
+                        <a href="https://tremigi.github.io/portfolio" target="_blank" rel="noreferrer noopener">Hire Me</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
     </div>
 </body>
 </html>
