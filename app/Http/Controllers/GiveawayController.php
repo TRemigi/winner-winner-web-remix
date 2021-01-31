@@ -38,7 +38,7 @@ class GiveawayController extends Controller
     {
         $giveaway = Giveaway::create($this->validateGiveaway());
 
-        return redirect($giveaway->path());
+        return $giveaway;
     }
 
     /**
@@ -49,7 +49,8 @@ class GiveawayController extends Controller
      */
     public function show(Giveaway $giveaway)
     {
-        return view('giveaways.show', compact('giveaway'));
+        $participants = $giveaway->participants;
+        return view('giveaways.show', compact('giveaway', 'participants'));
     }
 
     /**
@@ -74,7 +75,7 @@ class GiveawayController extends Controller
     {
         $giveaway->update($this->validateGiveaway());
 
-        return redirect($giveaway->path());
+        return $giveaway;
     }
 
     /**
@@ -93,7 +94,8 @@ class GiveawayController extends Controller
     protected function validateGiveaway()
     {
         return request()->validate([
-            'name' => 'required'
+            'name' => 'required',
+            'complete' => 'nullable|boolean'
         ]);
     }
 }

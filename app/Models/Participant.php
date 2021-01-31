@@ -9,7 +9,7 @@ class Participant extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['insta_name', 'giveaway_id'];
+    protected $fillable = ['insta_name', 'giveaway_id', 'is_winner'];
 
     public function giveaway()
     {

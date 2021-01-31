@@ -16,7 +16,7 @@ use App\Http\Controllers\ParticipantController;
 */
 // home page
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 // GIVEAWAY ROUTES
@@ -50,3 +50,7 @@ Route::get('/giveaways/{giveaway}/participants/{participant}/edit', [Participant
 Route::put('/giveaways/{giveaway}/participants/{participant}', [ParticipantController::class, 'update'])->name('participants.update');
 // delete participant
 Route::delete('/giveaways/{giveaway}/participants/{participant}', [ParticipantController::class, 'destroy'])->name('participants.destroy');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

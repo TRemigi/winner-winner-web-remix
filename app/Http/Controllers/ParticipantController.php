@@ -75,7 +75,7 @@ class ParticipantController extends Controller
     {
         $participant->update($this->validateParticipant());
 
-        return redirect($participant->path());
+        return $participant;
     }
 
     /**
@@ -95,7 +95,8 @@ class ParticipantController extends Controller
     {
         return request()->validate([
             'insta_name' => 'required',
-            'giveaway_id' => 'required'
+            'giveaway_id' => 'required',
+            'is_winner' => 'nullable|boolean'
         ]);
     }
 }

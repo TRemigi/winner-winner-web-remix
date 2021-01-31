@@ -1,3 +1,5 @@
-<?php
+@extends('layouts.app')
 
-dd($giveaway);
+@section('content')
+    <giveaway-show :giveaway="{{ $giveaway }}" :participants="{{ $participants }}"></giveaway-show>
+@endsection
