@@ -6,6 +6,13 @@
                 Add New
             </button>
         </div>
+        <div v-if="giveaways.length === 0" class="card mt-5 p-3">
+            <div class="row">
+                <div class="col-12 d-flex justify-content-center">
+                    <h3>No Giveaways Yet</h3>
+                </div>
+            </div>
+        </div>
         <div
          v-for='giveaway in giveaways' :key='giveaway.id'
          class="card mt-2 p-2 h-20">

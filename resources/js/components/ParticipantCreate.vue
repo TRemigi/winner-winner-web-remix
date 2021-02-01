@@ -9,7 +9,7 @@
         <form @submit.prevent="createNewParticipant">
             <div class="form-group">
                 <label for="participantName">Participant Instagram Name</label>
-                <input type="text" class="form-control" v-model="participantName" placeholder="@wants2work4Lendio">
+                <input type="text" class="form-control" v-model="participantName" placeholder="wants2work4Lendio">
                 <small class="form-text text-muted">Enter the instagram username of the giveaway participant.</small>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>

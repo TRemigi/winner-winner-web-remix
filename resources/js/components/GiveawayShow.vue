@@ -32,13 +32,13 @@
          v-for='participant in participants' :key='participant.id'
          :class="participant.is_winner == true ? 'card mt-2 p-2 h-20 bg-success' : 'card mt-2 p-2 h-20'">
             <div :class="participant.is_winner == true ? 'row warning is-winner' : 'row'">
-                <div class="col-4 mr-auto d-flex align-items-center">
+                <div class="col-6 mr-auto d-flex align-items-center">
                     <h3 class="m-0">{{participant.insta_name}}</h3>
                 </div>
-                <div v-if="participant.is_winner == true" class="col-4 d-flex align-items-center">
+                <div v-if="participant.is_winner == true" class="col-3 d-flex align-items-center">
                     <h3 class="m-0">WINNER</h3>
                 </div>
-                <div v-if="isComplete == false" class="col-4 d-flex justify-content-end">
+                <div v-if="isComplete == false" class="col-3 d-flex justify-content-end">
                     <button v-on:click="editParticipant(participant.id)" :class="participant.is_winner == true ? 'btn btn-outline-dark cust-btn-secondary p-2' : 'btn btn-outline-primary cust-btn-secondary p-2'">
                         Edit
                     </button>

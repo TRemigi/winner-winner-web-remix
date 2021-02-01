@@ -14,10 +14,16 @@ class GiveawayController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
-        // $user_id = Auth::user()->id;
-        $giveaways = Giveaway::get();
+        $user_id = Auth::id();
+        $giveaways = Giveaway::where('user_id', $user_id)->get();
         return view('giveaways.index', compact('giveaways'));
     }
 

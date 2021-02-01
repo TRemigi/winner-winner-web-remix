@@ -2012,6 +2012,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['giveaways'],
   mounted: function mounted() {
@@ -38691,6 +38698,10 @@ var render = function() {
         )
       ]),
       _vm._v(" "),
+      _vm.giveaways.length === 0
+        ? _c("div", { staticClass: "card mt-5 p-3" }, [_vm._m(0)])
+        : _vm._e(),
+      _vm._v(" "),
       _vm._l(_vm.giveaways, function(giveaway) {
         return _c(
           "div",
@@ -38730,7 +38741,18 @@ var render = function() {
     2
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-12 d-flex justify-content-center" }, [
+        _c("h3", [_vm._v("No Giveaways Yet")])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -38844,7 +38866,7 @@ var render = function() {
               [
                 _c(
                   "div",
-                  { staticClass: "col-4 mr-auto d-flex align-items-center" },
+                  { staticClass: "col-6 mr-auto d-flex align-items-center" },
                   [
                     _c("h3", { staticClass: "m-0" }, [
                       _vm._v(_vm._s(participant.insta_name))
@@ -38855,7 +38877,7 @@ var render = function() {
                 participant.is_winner == true
                   ? _c(
                       "div",
-                      { staticClass: "col-4 d-flex align-items-center" },
+                      { staticClass: "col-3 d-flex align-items-center" },
                       [_c("h3", { staticClass: "m-0" }, [_vm._v("WINNER")])]
                     )
                   : _vm._e(),
@@ -38863,7 +38885,7 @@ var render = function() {
                 _vm.isComplete == false
                   ? _c(
                       "div",
-                      { staticClass: "col-4 d-flex justify-content-end" },
+                      { staticClass: "col-3 d-flex justify-content-end" },
                       [
                         _c(
                           "button",
@@ -39058,7 +39080,7 @@ var render = function() {
               }
             ],
             staticClass: "form-control",
-            attrs: { type: "text", placeholder: "@wants2work4Lendio" },
+            attrs: { type: "text", placeholder: "wants2work4Lendio" },
             domProps: { value: _vm.participantName },
             on: {
               input: function($event) {
