@@ -2,7 +2,7 @@
     <div>
         <div class="row m-2">
             <h1 class="mb-4 mr-auto mb-0">Edit Participant {{ participant.insta_name }}</h1>
-            <button v-on:click="backToGiveaway" class="btn btn-primary cust-btn-primary">
+            <button v-on:click="backToGiveaway" class="btn shadow btn-outline-primary cust-btn-primary">
                 Back to Giveaway
             </button>
         </div>
@@ -12,10 +12,10 @@
                 <input type="text" class="form-control" v-model="participantName" :placeholder="participant.insta_name">
                 <small class="form-text text-muted">Enter the instagram username of the giveaway participant, and don't screw it up this time.</small>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn shadow btn-outline-primary">Submit</button>
         </form>
         <div class="row m-1 mt-5">
-            <button v-on:click="deleteParticipant" class="btn btn-danger cust-btn-delete p-2">
+            <button v-on:click="deleteParticipant" class="btn shadow btn-outline-danger cust-btn-delete p-2">
                 Delete Participant
             </button>
         </div>

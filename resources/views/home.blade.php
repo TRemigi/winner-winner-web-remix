@@ -16,7 +16,7 @@
                         Welcome, {{ Auth::user()->name }}
                     </div>
                     <div class="col-12 d-flex justify-content-center mt-3">
-                        <button class="btn btn-primary" onclick="{ window.location = '/giveaways' }">Go to Giveaways</button>
+                        <button class="btn shadow btn-outline-primary" onclick="{ window.location = '/giveaways' }">Go to Giveaways</button>
                     </div>
                 </div>
             </div>

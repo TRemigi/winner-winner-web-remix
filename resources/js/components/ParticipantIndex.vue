@@ -3,7 +3,7 @@
         <div class="row m-2">
             <h1 class="mb-4 mr-auto mb-0">All Participants</h1>
         </div>
-        <div v-if="participants.length === 0" class="card mt-5 p-3">
+        <div v-if="participants.length === 0" class="card shadow mt-5 p-3">
             <div class="row">
                 <div class="col-12 d-flex justify-content-center">
                     <h3>No Participants Yet</h3>
@@ -15,7 +15,7 @@
         </div>
         <div
          v-for='participant in participants' :key='participant.id'
-         :class="participant.is_winner == true ? 'card bg-success mt-2 p-2 h-20' : 'card mt-2 p-2 h-20'">
+         :class="participant.is_winner == true ? 'card shadow bg-success mt-2 p-2 h-20' : 'card shadow mt-2 p-2 h-20'">
          <div class="row">
             <div class="col-4 mr-auto d-flex align-items-center">
                 <h3 class="m-0">{{participant.insta_name}}</h3>
@@ -24,14 +24,11 @@
                 <h3 class="m-0">WINNER</h3>
             </div>
             <div class="col-4 d-flex justify-content-end">
-                <button v-on:click="showGiveaway(participant.giveaway_id)" :class="participant.is_winner == true ? 'btn btn-outline-dark cust-btn-secondary p-2' : 'btn btn-outline-primary cust-btn-secondary p-2'">
+                <button v-on:click="showGiveaway(participant.giveaway_id)" :class="participant.is_winner == true ? 'btn shadow btn-outline-dark cust-btn-secondary p-2' : 'btn shadow btn-outline-primary cust-btn-secondary p-2'">
                     View Giveaway
                 </button>
-                <button v-on:click="editParticipant(participant.giveaway_id, participant.id)" :class="participant.is_winner == true ? 'btn btn-outline-dark cust-btn-secondary ml-2 p-2' : 'btn btn-outline-primary cust-btn-secondary ml-2 p-2'">
+                <button v-on:click="editParticipant(participant.giveaway_id, participant.id)" :class="participant.is_winner == true ? 'btn shadow btn-outline-dark cust-btn-secondary ml-2 p-2' : 'btn shadow btn-outline-primary cust-btn-secondary ml-2 p-2'">
                     Edit
-                </button>
-                <button v-on:click="deleteParticipant" class="btn btn-danger cust-btn-delete ml-2 p-2">
-                    Delete
                 </button>
             </div>
             </div>
@@ -53,10 +50,6 @@
             editParticipant: function (giveawayId, participantId) {
                 window.location = `/giveaways/${giveawayId}/participants/${participantId}/edit`;
             },
-            deleteParticipant: function () {
-                axios.delete(`/giveaways/${this.giveaway.id}/participants/${this.participant.id}`)
-                .then(response => window.location = `/participants`);
-            }
         },
 
     }

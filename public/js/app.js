@@ -2344,9 +2344,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['participants'],
   mounted: function mounted() {// Do something useful with the data in the template
@@ -2357,11 +2354,6 @@ __webpack_require__.r(__webpack_exports__);
     },
     editParticipant: function editParticipant(giveawayId, participantId) {
       window.location = "/giveaways/".concat(giveawayId, "/participants/").concat(participantId, "/edit");
-    },
-    deleteParticipant: function deleteParticipant() {
-      axios["delete"]("/giveaways/".concat(this.giveaway.id, "/participants/").concat(this.participant.id)).then(function (response) {
-        return window.location = "/participants";
-      });
     }
   }
 });
@@ -38545,7 +38537,10 @@ var render = function() {
         _vm._v(" "),
         _c(
           "button",
-          { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+          {
+            staticClass: "btn btn-outline-primary shadow",
+            attrs: { type: "submit" }
+          },
           [_vm._v("Submit")]
         )
       ]
@@ -38636,7 +38631,10 @@ var render = function() {
         _vm._v(" "),
         _c(
           "button",
-          { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+          {
+            staticClass: "btn btn-outline-primary shadow",
+            attrs: { type: "submit" }
+          },
           [_vm._v("Submit")]
         )
       ]
@@ -38646,7 +38644,7 @@ var render = function() {
       _c(
         "button",
         {
-          staticClass: "btn btn-danger cust-btn-delete p-2",
+          staticClass: "btn btn-danger shadow p-2",
           on: { click: _vm.deleteGiveaway }
         },
         [_vm._v("\n            Delete Giveaway\n        ")]
@@ -38689,13 +38687,13 @@ var render = function() {
   return _c(
     "div",
     [
-      _c("div", { staticClass: "row m-2" }, [
+      _c("div", { staticClass: "row m-2 mb-4" }, [
         _c("h1", { staticClass: "mb-4 mr-auto mb-0" }, [_vm._v("Giveaways")]),
         _vm._v(" "),
         _c(
           "button",
           {
-            staticClass: "btn btn-primary cust-btn-primary",
+            staticClass: "btn shadow btn-outline-primary",
             on: { click: _vm.createGiveaway }
           },
           [_vm._v("\n            Add New\n        ")]
@@ -38703,13 +38701,13 @@ var render = function() {
       ]),
       _vm._v(" "),
       _vm.giveaways.length === 0
-        ? _c("div", { staticClass: "card mt-5 p-3" }, [_vm._m(0)])
+        ? _c("div", { staticClass: "card shadow mt-5 p-3" }, [_vm._m(0)])
         : _vm._e(),
       _vm._v(" "),
       _vm._l(_vm.giveaways, function(giveaway) {
         return _c(
           "div",
-          { key: giveaway.id, staticClass: "card mt-2 p-2 h-20" },
+          { key: giveaway.id, staticClass: "card shadow mt-2 p-2 h-20" },
           [
             _c("div", { staticClass: "row" }, [
               _c(
@@ -38727,7 +38725,7 @@ var render = function() {
                   "button",
                   {
                     staticClass:
-                      "btn btn-outline-primary cust-btn-secondary p-2",
+                      "btn shadow btn-outline-primary cust-btn-secondary p-2",
                     on: {
                       click: function($event) {
                         return _vm.showGiveaway(giveaway.id)
@@ -38793,7 +38791,7 @@ var render = function() {
             _c(
               "button",
               {
-                staticClass: "btn btn-danger cust-btn-delete ml-2 p-2",
+                staticClass: "btn shadow btn-danger cust-btn-delete ml-2 p-2",
                 on: { click: _vm.deleteGiveaway }
               },
               [_vm._v("\n            Delete Giveaway\n        ")]
@@ -38807,7 +38805,7 @@ var render = function() {
             _c(
               "button",
               {
-                staticClass: "btn btn-primary cust-btn-primary",
+                staticClass: "btn shadow btn-outline-primary cust-btn-primary",
                 on: {
                   click: function($event) {
                     return _vm.editGiveaway()
@@ -38821,7 +38819,8 @@ var render = function() {
               ? _c(
                   "button",
                   {
-                    staticClass: "btn btn-primary cust-btn-primary ml-2",
+                    staticClass:
+                      "btn shadow btn-outline-primary cust-btn-outline-primary ml-2",
                     on: {
                       click: function($event) {
                         return _vm.completeGiveaway()
@@ -38836,7 +38835,8 @@ var render = function() {
               ? _c(
                   "button",
                   {
-                    staticClass: "btn btn-warning cust-btn-winners ml-2",
+                    staticClass:
+                      "btn shadow btn-outline-primary cust-btn-winners ml-2",
                     on: { click: _vm.chooseWinner }
                   },
                   [_vm._v("\n            Choose Winner\n        ")]
@@ -38846,7 +38846,7 @@ var render = function() {
             _c(
               "button",
               {
-                staticClass: "btn btn-danger cust-btn-delete ml-2 p-2",
+                staticClass: "btn shadow btn-outline-danger ml-2 p-2",
                 on: { click: _vm.deleteGiveaway }
               },
               [_vm._v("\n            Delete Giveaway\n        ")]
@@ -38854,7 +38854,7 @@ var render = function() {
           ]),
       _vm._v(" "),
       _vm.participants.length === 0
-        ? _c("div", { staticClass: "card mt-5 p-3" }, [_vm._m(1)])
+        ? _c("div", { staticClass: "card shadow mt-5 p-3" }, [_vm._m(1)])
         : _vm._e(),
       _vm._v(" "),
       _vm._l(_vm.participants, function(participant) {
@@ -38864,8 +38864,8 @@ var render = function() {
             key: participant.id,
             class:
               participant.is_winner == true
-                ? "card mt-2 p-2 h-20 bg-success"
-                : "card mt-2 p-2 h-20"
+                ? "card shadow mt-4 p-2 h-20 bg-success"
+                : "card shadow mt-4 p-2 h-20"
           },
           [
             _c(
@@ -38895,7 +38895,7 @@ var render = function() {
                     )
                   : _vm._e(),
                 _vm._v(" "),
-                _vm.isComplete == false
+                (_vm.isComplete == false) & (participant.is_winner == false)
                   ? _c(
                       "div",
                       { staticClass: "col-3 d-flex justify-content-end" },
@@ -38905,8 +38905,8 @@ var render = function() {
                           {
                             class:
                               participant.is_winner == true
-                                ? "btn btn-outline-dark cust-btn-secondary p-2"
-                                : "btn btn-outline-primary cust-btn-secondary p-2",
+                                ? "btn shadow btn-outline-dark cust-btn-secondary p-2"
+                                : "btn shadow btn-outline-primary cust-btn-secondary p-2",
                             on: {
                               click: function($event) {
                                 return _vm.editParticipant(participant.id)
@@ -38929,12 +38929,13 @@ var render = function() {
       }),
       _vm._v(" "),
       _vm.isComplete == false
-        ? _c("div", { staticClass: "row mt-2" }, [
+        ? _c("div", { staticClass: "row mt-4" }, [
             _c("div", { staticClass: "col-12 d-flex justify-content-center" }, [
               _c(
                 "button",
                 {
-                  staticClass: "btn btn-primary cust-btn-secondary p-2",
+                  staticClass:
+                    "btn shadow btn-outline-primary cust-btn-secondary p-2",
                   on: {
                     click: function($event) {
                       return _vm.addParticipant()
@@ -39005,7 +39006,7 @@ var staticRenderFns = [
           _c(
             "button",
             {
-              staticClass: "btn btn-primary",
+              staticClass: "btn shadow btn-primary",
               attrs: { onClick: "window.location.href='/giveaways';" }
             },
             [_vm._v("\n        View Giveaways!\n        ")]
@@ -39046,7 +39047,7 @@ var render = function() {
       _c(
         "button",
         {
-          staticClass: "btn btn-primary cust-btn-primary",
+          staticClass: "btn shadow btn-outline-primary cust-btn-primary",
           on: { click: _vm.backToGiveaway }
         },
         [_vm._v("\n            Back to Giveaway\n        ")]
@@ -39098,7 +39099,10 @@ var render = function() {
         _vm._v(" "),
         _c(
           "button",
-          { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+          {
+            staticClass: "btn shadow btn-outline-primary",
+            attrs: { type: "submit" }
+          },
           [_vm._v("Submit")]
         )
       ]
@@ -39137,7 +39141,7 @@ var render = function() {
       _c(
         "button",
         {
-          staticClass: "btn btn-primary cust-btn-primary",
+          staticClass: "btn shadow btn-outline-primary cust-btn-primary",
           on: { click: _vm.backToGiveaway }
         },
         [_vm._v("\n            Back to Giveaway\n        ")]
@@ -39191,7 +39195,10 @@ var render = function() {
         _vm._v(" "),
         _c(
           "button",
-          { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+          {
+            staticClass: "btn shadow btn-outline-primary",
+            attrs: { type: "submit" }
+          },
           [_vm._v("Submit")]
         )
       ]
@@ -39201,7 +39208,7 @@ var render = function() {
       _c(
         "button",
         {
-          staticClass: "btn btn-danger cust-btn-delete p-2",
+          staticClass: "btn shadow btn-outline-danger cust-btn-delete p-2",
           on: { click: _vm.deleteParticipant }
         },
         [_vm._v("\n            Delete Participant\n        ")]
@@ -39238,7 +39245,7 @@ var render = function() {
       _vm._m(0),
       _vm._v(" "),
       _vm.participants.length === 0
-        ? _c("div", { staticClass: "card mt-5 p-3" }, [_vm._m(1)])
+        ? _c("div", { staticClass: "card shadow mt-5 p-3" }, [_vm._m(1)])
         : _vm._e(),
       _vm._v(" "),
       _vm._l(_vm.participants, function(participant) {
@@ -39248,8 +39255,8 @@ var render = function() {
             key: participant.id,
             class:
               participant.is_winner == true
-                ? "card bg-success mt-2 p-2 h-20"
-                : "card mt-2 p-2 h-20"
+                ? "card shadow bg-success mt-2 p-2 h-20"
+                : "card shadow mt-2 p-2 h-20"
           },
           [
             _c("div", { staticClass: "row" }, [
@@ -39277,8 +39284,8 @@ var render = function() {
                   {
                     class:
                       participant.is_winner == true
-                        ? "btn btn-outline-dark cust-btn-secondary p-2"
-                        : "btn btn-outline-primary cust-btn-secondary p-2",
+                        ? "btn shadow btn-outline-dark cust-btn-secondary p-2"
+                        : "btn shadow btn-outline-primary cust-btn-secondary p-2",
                     on: {
                       click: function($event) {
                         return _vm.showGiveaway(participant.giveaway_id)
@@ -39293,8 +39300,8 @@ var render = function() {
                   {
                     class:
                       participant.is_winner == true
-                        ? "btn btn-outline-dark cust-btn-secondary ml-2 p-2"
-                        : "btn btn-outline-primary cust-btn-secondary ml-2 p-2",
+                        ? "btn shadow btn-outline-dark cust-btn-secondary ml-2 p-2"
+                        : "btn shadow btn-outline-primary cust-btn-secondary ml-2 p-2",
                     on: {
                       click: function($event) {
                         return _vm.editParticipant(
@@ -39305,15 +39312,6 @@ var render = function() {
                     }
                   },
                   [_vm._v("\n                Edit\n            ")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-danger cust-btn-delete ml-2 p-2",
-                    on: { click: _vm.deleteParticipant }
-                  },
-                  [_vm._v("\n                Delete\n            ")]
                 )
               ])
             ])

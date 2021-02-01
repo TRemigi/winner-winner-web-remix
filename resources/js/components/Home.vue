@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="row justify-content-center align-content-center">
-            <button class="btn btn-primary" onClick="window.location.href='/giveaways';" >
+            <button class="btn shadow btn-primary" onClick="window.location.href='/giveaways';" >
             View Giveaways!
             </button>
         </div>

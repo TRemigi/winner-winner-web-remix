@@ -10,7 +10,7 @@
 
                 <small class="form-text text-muted">Give your giveaway a descriptive name.</small>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-outline-primary shadow">Submit</button>
         </form>
     </div>
 </template>

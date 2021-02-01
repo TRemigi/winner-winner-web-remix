@@ -9,10 +9,10 @@
                 <input type="text" class="form-control" v-model="giveawayName" :placeholder="giveaway.name">
                 <small class="form-text text-muted">Give your giveaway a descriptive name. And hey, try to get it right this time...</small>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-outline-primary shadow">Submit</button>
         </form>
         <div class="row m-1 mt-5">
-            <button v-on:click="deleteGiveaway" class="btn btn-danger cust-btn-delete p-2">
+            <button v-on:click="deleteGiveaway" class="btn btn-danger shadow p-2">
                 Delete Giveaway
             </button>
         </div>

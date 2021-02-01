@@ -5,26 +5,26 @@
             <div>
                 <h2>COMPLETED</h2>
             </div>
-            <button v-on:click="deleteGiveaway" class="btn btn-danger cust-btn-delete ml-2 p-2">
+            <button v-on:click="deleteGiveaway" class="btn shadow btn-danger cust-btn-delete ml-2 p-2">
                 Delete Giveaway
             </button>
         </div>
         <div v-else class="row m-2">
             <h1 class="mb-4 mr-auto mb-0">{{ giveaway.name }}</h1>
-            <button v-on:click="editGiveaway()" class="btn btn-primary cust-btn-primary">
+            <button v-on:click="editGiveaway()" class="btn shadow btn-outline-primary cust-btn-primary">
                 Edit
             </button>
-            <button v-if="winnerChosen" v-on:click="completeGiveaway()" class="btn btn-primary cust-btn-primary ml-2">
+            <button v-if="winnerChosen" v-on:click="completeGiveaway()" class="btn shadow btn-outline-primary cust-btn-outline-primary ml-2">
                 Mark Complete
             </button>
-            <button v-if="participants.length >= 2" v-on:click="chooseWinner" class="btn btn-warning cust-btn-winners ml-2">
+            <button v-if="participants.length >= 2" v-on:click="chooseWinner" class="btn shadow btn-outline-primary cust-btn-winners ml-2">
                 Choose Winner
             </button>
-            <button v-on:click="deleteGiveaway" class="btn btn-danger cust-btn-delete ml-2 p-2">
+            <button v-on:click="deleteGiveaway" class="btn shadow btn-outline-danger ml-2 p-2">
                 Delete Giveaway
             </button>
         </div>
-        <div v-if="participants.length === 0" class="card mt-5 p-3">
+        <div v-if="participants.length === 0" class="card shadow mt-5 p-3">
             <div class="row">
                 <div class="col-12 d-flex justify-content-center">
                     <h3>No Participants Yet</h3>
@@ -33,7 +33,7 @@
         </div>
         <div
          v-for='participant in participants' :key='participant.id'
-         :class="participant.is_winner == true ? 'card mt-2 p-2 h-20 bg-success' : 'card mt-2 p-2 h-20'">
+         :class="participant.is_winner == true ? 'card shadow mt-4 p-2 h-20 bg-success' : 'card shadow mt-4 p-2 h-20'">
             <div :class="participant.is_winner == true ? 'row warning is-winner' : 'row'">
                 <div class="col-6 mr-auto d-flex align-items-center">
                     <h3 class="m-0">{{participant.insta_name}}</h3>
@@ -41,16 +41,16 @@
                 <div v-if="participant.is_winner == true" class="col-3 d-flex align-items-center">
                     <h3 class="m-0">WINNER</h3>
                 </div>
-                <div v-if="isComplete == false" class="col-3 d-flex justify-content-end">
-                    <button v-on:click="editParticipant(participant.id)" :class="participant.is_winner == true ? 'btn btn-outline-dark cust-btn-secondary p-2' : 'btn btn-outline-primary cust-btn-secondary p-2'">
+                <div v-if="isComplete == false & participant.is_winner == false" class="col-3 d-flex justify-content-end">
+                    <button v-on:click="editParticipant(participant.id)" :class="participant.is_winner == true ? 'btn shadow btn-outline-dark cust-btn-secondary p-2' : 'btn shadow btn-outline-primary cust-btn-secondary p-2'">
                         Edit
                     </button>
                 </div>
             </div>
         </div>
-        <div v-if="isComplete == false" class="row mt-2">
+        <div v-if="isComplete == false" class="row mt-4">
             <div class="col-12 d-flex justify-content-center">
-                <button v-on:click="addParticipant()" class="btn btn-primary cust-btn-secondary p-2">
+                <button v-on:click="addParticipant()" class="btn shadow btn-outline-primary cust-btn-secondary p-2">
                     Add Participants
                 </button>
             </div>
