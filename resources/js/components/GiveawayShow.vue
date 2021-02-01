@@ -5,6 +5,9 @@
             <div>
                 <h2>COMPLETED</h2>
             </div>
+            <button v-on:click="deleteGiveaway" class="btn btn-danger cust-btn-delete ml-2 p-2">
+                Delete Giveaway
+            </button>
         </div>
         <div v-else class="row m-2">
             <h1 class="mb-4 mr-auto mb-0">{{ giveaway.name }}</h1>

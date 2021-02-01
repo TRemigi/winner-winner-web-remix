@@ -2158,7 +2158,8 @@ __webpack_require__.r(__webpack_exports__);
     completeGiveaway: function completeGiveaway() {
       axios.put("/giveaways/".concat(this.giveaway.id), {
         name: this.giveaway.name,
-        complete: true
+        complete: true,
+        user_id: this.giveaway.user_id
       }).then(function (response) {
         return window.location = "/giveaways/".concat(response.data.id);
       });
@@ -38784,7 +38785,16 @@ var render = function() {
               _vm._v(_vm._s(_vm.giveaway.name))
             ]),
             _vm._v(" "),
-            _vm._m(0)
+            _vm._m(0),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-danger cust-btn-delete ml-2 p-2",
+                on: { click: _vm.deleteGiveaway }
+              },
+              [_vm._v("\n            Delete Giveaway\n        ")]
+            )
           ])
         : _c("div", { staticClass: "row m-2" }, [
             _c("h1", { staticClass: "mb-4 mr-auto mb-0" }, [
@@ -38903,24 +38913,6 @@ var render = function() {
                           [
                             _vm._v(
                               "\n                    Edit\n                "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "button",
-                          {
-                            staticClass:
-                              "btn btn-danger cust-btn-delete ml-2 p-2",
-                            on: {
-                              click: function($event) {
-                                return _vm.deleteParticipant(participant.id)
-                              }
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "\n                    Delete\n                "
                             )
                           ]
                         )
