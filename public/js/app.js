@@ -2150,6 +2150,7 @@ __webpack_require__.r(__webpack_exports__);
       axios.put("/giveaways/".concat(this.giveaway.id, "/participants/").concat(winner.id), {
         insta_name: winner.insta_name,
         giveaway_id: winner.giveaway_id,
+        user_id: winner.user_id,
         is_winner: true
       }).then(function (response) {
         return window.location = "/giveaways/".concat(response.data.giveaway_id);
@@ -2215,7 +2216,8 @@ __webpack_require__.r(__webpack_exports__);
     createNewParticipant: function createNewParticipant() {
       axios.post("/giveaways/".concat(this.giveaway.id, "/participants"), {
         insta_name: this.participantName,
-        giveaway_id: this.giveaway.id
+        giveaway_id: this.giveaway.id,
+        user_id: this.giveaway.user_id
       }).then(function (response) {
         return window.location = "/giveaways/".concat(response.data.giveaway_id);
       });
@@ -2274,7 +2276,8 @@ __webpack_require__.r(__webpack_exports__);
     editParticipant: function editParticipant() {
       axios.put("/giveaways/".concat(this.giveaway.id, "/participants/").concat(this.participant.id), {
         insta_name: this.participantName,
-        giveaway_id: this.giveaway.id
+        giveaway_id: this.giveaway.id,
+        user_id: this.participant.user_id
       }).then(function (response) {
         return window.location = "/giveaways/".concat(response.data.giveaway_id);
       });

@@ -34,7 +34,8 @@
             editParticipant: function () {
                 axios.put(`/giveaways/${this.giveaway.id}/participants/${this.participant.id}`, {
                     insta_name: this.participantName,
-                    giveaway_id: this.giveaway.id
+                    giveaway_id: this.giveaway.id,
+                    user_id: this.participant.user_id
                     })
                 .then(response => window.location = `/giveaways/${response.data.giveaway_id}`);
             },

@@ -100,6 +100,7 @@
                 axios.put(`/giveaways/${this.giveaway.id}/participants/${winner.id}`, {
                     insta_name: winner.insta_name,
                     giveaway_id: winner.giveaway_id,
+                    user_id: winner.user_id,
                     is_winner: true
                     })
                 .then(response => window.location = `/giveaways/${response.data.giveaway_id}`);

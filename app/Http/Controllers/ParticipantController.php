@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Giveaway;
 use App\Models\Participant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ParticipantController extends Controller
 {
@@ -21,7 +22,8 @@ class ParticipantController extends Controller
 
     public function index(Giveaway $giveaway)
     {
-        $participants = Participant::orderBy('insta_name')->get();
+        $user_id = Auth::id();
+        $participants = Participant::where('user_id', $user_id)->orderBy('insta_name')->get();
         return view('participants.index', compact('participants'));
     }
 
@@ -102,6 +104,7 @@ class ParticipantController extends Controller
         return request()->validate([
             'insta_name' => 'required',
             'giveaway_id' => 'required',
+            'user_id' => 'required',
             'is_winner' => 'nullable|boolean'
         ]);
     }

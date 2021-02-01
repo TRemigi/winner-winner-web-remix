@@ -29,9 +29,10 @@
             createNewParticipant: function () {
                 axios.post(`/giveaways/${this.giveaway.id}/participants`, {
                     insta_name: this.participantName,
-                    giveaway_id: this.giveaway.id
+                    giveaway_id: this.giveaway.id,
+                    user_id: this.giveaway.user_id
                     })
-                .then(response => window.location = `/giveaways/${response.data.giveaway_id}`);
+                    .then(response => window.location = `/giveaways/${response.data.giveaway_id}`);
             },
             backToGiveaway: function () {
                 window.location = `/giveaways/${this.giveaway.id}`;

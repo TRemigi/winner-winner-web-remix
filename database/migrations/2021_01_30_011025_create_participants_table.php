@@ -18,11 +18,17 @@ class CreateParticipantsTable extends Migration
             $table->timestamps();
             $table->text('insta_name');
             $table->unsignedBigInteger('giveaway_id');
+            $table->unsignedBigInteger('user_id');
             $table->boolean('is_winner')->default(false);
 
             $table->foreign('giveaway_id')
                 ->references('id')
                 ->on('giveaways')
+                ->onDelete('cascade');
+
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
                 ->onDelete('cascade');
         });
     }
