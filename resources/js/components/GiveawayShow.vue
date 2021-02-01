@@ -42,7 +42,7 @@
                     <button v-on:click="editParticipant(participant.id)" :class="participant.is_winner == true ? 'btn btn-outline-dark cust-btn-secondary p-2' : 'btn btn-outline-primary cust-btn-secondary p-2'">
                         Edit
                     </button>
-                    <button v-on:click="deleteParticipant" class="btn btn-danger cust-btn-delete ml-2 p-2">
+                    <button v-on:click="deleteParticipant(participant.id)" class="btn btn-danger cust-btn-delete ml-2 p-2">
                         Delete
                     </button>
                 </div>
@@ -91,6 +91,10 @@
             addParticipant: function () {
                 window.location = `/giveaways/${this.giveaway.id}/participants/create`
             },
+            deleteParticipant: function (participantId) {
+                axios.delete(`/giveaways/${this.giveaway.id}/participants/${participantId}`)
+                .then(response => window.location = `/giveaways/${response.data.giveaway_id}`);
+            },
             chooseWinner: function () {
                 let winner = this.participants[Math.floor(Math.random()*this.participants.length)];
                 axios.put(`/giveaways/${this.giveaway.id}/participants/${winner.id}`, {
@@ -111,10 +115,6 @@
                 axios.delete(`/giveaways/${this.giveaway.id}`)
                 .then(response => window.location = '/giveaways');
             },
-            deleteParticipant: function () {
-                axios.delete(`/giveaways/${this.giveaway.id}/participants/${this.participant.id}`)
-                .then(response => window.location = `/giveaways/${response.data.giveaway_id}`);
-            }
 
         },
 
