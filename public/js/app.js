@@ -1896,7 +1896,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: ['user'],
   data: function data() {
     return {
       giveawayName: ''
@@ -1905,7 +1907,8 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     createNewGiveaway: function createNewGiveaway() {
       axios.post('/giveaways', {
-        name: this.giveawayName
+        name: this.giveawayName,
+        user_id: this.user
       }).then(function (response) {
         return window.location = "/giveaways/".concat(response.data.id);
       });
@@ -1953,11 +1956,12 @@ __webpack_require__.r(__webpack_exports__);
       giveawayName: ''
     };
   },
-  props: ['giveaway'],
+  props: ['giveaway', 'user'],
   methods: {
     editGiveaway: function editGiveaway() {
       axios.put("/giveaways/".concat(this.giveaway.id), {
-        name: this.giveawayName
+        name: this.giveawayName,
+        user_id: this.user
       }).then(function (response) {
         return window.location = "/giveaways/".concat(response.data.id);
       });
@@ -2325,6 +2329,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['participants'],
   mounted: function mounted() {// Do something useful with the data in the template
@@ -2377,7 +2388,9 @@ Vue.component("home-component", __webpack_require__(/*! ./components/Home.vue */
 Vue.component("giveaway-index", __webpack_require__(/*! ./components/GiveawayIndex.vue */ "./resources/js/components/GiveawayIndex.vue").default, {
   props: ["giveaways"]
 });
-Vue.component("giveaway-create", __webpack_require__(/*! ./components/GiveawayCreate.vue */ "./resources/js/components/GiveawayCreate.vue").default);
+Vue.component("giveaway-create", __webpack_require__(/*! ./components/GiveawayCreate.vue */ "./resources/js/components/GiveawayCreate.vue").default, {
+  props: ["user"]
+});
 Vue.component("giveaway-edit", __webpack_require__(/*! ./components/GiveawayEdit.vue */ "./resources/js/components/GiveawayEdit.vue").default, {
   props: ["giveaway"]
 });
@@ -39203,6 +39216,10 @@ var render = function() {
     [
       _vm._m(0),
       _vm._v(" "),
+      _vm.participants.length === 0
+        ? _c("div", { staticClass: "card mt-5 p-3" }, [_vm._m(1)])
+        : _vm._e(),
+      _vm._v(" "),
       _vm._l(_vm.participants, function(participant) {
         return _c(
           "div",
@@ -39294,6 +39311,22 @@ var staticRenderFns = [
     return _c("div", { staticClass: "row m-2" }, [
       _c("h1", { staticClass: "mb-4 mr-auto mb-0" }, [
         _vm._v("All Participants")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-12 d-flex justify-content-center" }, [
+        _c("h3", [_vm._v("No Participants Yet")])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-12 d-flex justify-content-center" }, [
+        _c("p", { staticClass: "form-text text-muted" }, [
+          _vm._v("Visit a giveaway you've created to get started.")
+        ])
       ])
     ])
   }

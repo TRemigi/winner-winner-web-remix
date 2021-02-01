@@ -37,7 +37,10 @@ Vue.component(
 
 Vue.component(
     "giveaway-create",
-    require("./components/GiveawayCreate.vue").default
+    require("./components/GiveawayCreate.vue").default,
+    {
+        props: ["user"]
+    }
 );
 
 Vue.component(

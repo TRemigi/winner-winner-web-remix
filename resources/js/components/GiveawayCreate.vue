@@ -7,6 +7,7 @@
             <div class="form-group">
                 <label for="giveawayName">Giveaway Name</label>
                 <input type="text" class="form-control" v-model="giveawayName" placeholder="Lendio Promo Giveaway">
+
                 <small class="form-text text-muted">Give your giveaway a descriptive name.</small>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
@@ -16,14 +17,15 @@
 
 <script>
     export default {
+        props: ['user'],
         data() {
             return {
-                giveawayName: ''
+                giveawayName: '',
             }
         },
         methods: {
             createNewGiveaway: function () {
-                axios.post('/giveaways', {name: this.giveawayName})
+                axios.post('/giveaways', {name: this.giveawayName, user_id: this.user})
                 .then(response => window.location = `/giveaways/${response.data.id}`);
             },
         },

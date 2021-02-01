@@ -14,10 +14,6 @@ use App\Http\Controllers\ParticipantController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-// home page
-Route::get('/', function () {
-    return view('home');
-});
 
 // GIVEAWAY ROUTES
 // show all giveaways
@@ -53,4 +49,5 @@ Route::delete('/giveaways/{giveaway}/participants/{participant}', [ParticipantCo
 
 Auth::routes();
 
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

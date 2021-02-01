@@ -23,7 +23,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/giveaways') }}">
+                <a class="navbar-brand" href="{{ url('/') }}">
                     Winner Winner
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -82,10 +82,10 @@
             @yield('content')
         </main>
 
-        <footer class="container m-5 border-top">
+        <footer class="container mt-5 border-top">
             <div>
                 <div class="row mt-5">
-                    <div class="col-12 d-flex justify-content-center">
+                    <div class="col-12 d-flex justify-content-center m-0">
                         &copy; Taylor Remigi 2021
                     </div>
                     <div class="col-12 d-flex justify-content-center">

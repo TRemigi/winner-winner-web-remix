@@ -26,10 +26,10 @@
                 giveawayName: ''
             }
         },
-        props: ['giveaway'],
+        props: ['giveaway', 'user'],
         methods: {
             editGiveaway: function () {
-                axios.put(`/giveaways/${this.giveaway.id}`, {name: this.giveawayName})
+                axios.put(`/giveaways/${this.giveaway.id}`, {name: this.giveawayName, user_id: this.user})
                 .then(response => window.location = `/giveaways/${response.data.id}`);
             },
             deleteGiveaway: function () {

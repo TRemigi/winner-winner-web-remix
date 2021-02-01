@@ -15,7 +15,7 @@ class Giveaway extends Model
     //     return 'name'
     // }
 
-    protected $fillable = ['name', 'complete', 'participants_id'];
+    protected $fillable = ['name', 'complete', 'participants_id', 'user_id'];
     // To remove mass assignment protection:
     // protected $guarded = [];
     public function path()

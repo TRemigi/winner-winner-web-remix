@@ -1,5 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-<giveaway-create></giveaway-create>
+<giveaway-create :user="{{ $user }}"></giveaway-create>
 @endsection

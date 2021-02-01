@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Giveaway;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class GiveawayController extends Controller
 {
@@ -14,6 +16,7 @@ class GiveawayController extends Controller
      */
     public function index()
     {
+        // $user_id = Auth::user()->id;
         $giveaways = Giveaway::get();
         return view('giveaways.index', compact('giveaways'));
     }
@@ -25,7 +28,8 @@ class GiveawayController extends Controller
      */
     public function create()
     {
-        return view('giveaways.create');
+        $user = Auth::id();
+        return view('giveaways.create', compact('user'));
     }
 
     /**
@@ -61,7 +65,8 @@ class GiveawayController extends Controller
      */
     public function edit(Giveaway $giveaway)
     {
-        return view('giveaways.edit', compact('giveaway'));
+        $user = Auth::id();
+        return view('giveaways.edit', compact('giveaway', 'user'));
     }
 
     /**
@@ -95,7 +100,8 @@ class GiveawayController extends Controller
     {
         return request()->validate([
             'name' => 'required',
-            'complete' => 'nullable|boolean'
+            'complete' => 'nullable|boolean',
+            'user_id' => 'required'
         ]);
     }
 }

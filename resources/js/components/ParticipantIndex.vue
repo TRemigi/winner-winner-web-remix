@@ -2,9 +2,16 @@
     <div>
         <div class="row m-2">
             <h1 class="mb-4 mr-auto mb-0">All Participants</h1>
-            <!-- <button v-on:click="createGiveaway" class="btn btn-primary cust-btn-primary">
-                Add New
-            </button> -->
+        </div>
+        <div v-if="participants.length === 0" class="card mt-5 p-3">
+            <div class="row">
+                <div class="col-12 d-flex justify-content-center">
+                    <h3>No Participants Yet</h3>
+                </div>
+                <div class="col-12 d-flex justify-content-center">
+                    <p class="form-text text-muted">Visit a giveaway you've created to get started.</p>
+                </div>
+            </div>
         </div>
         <div
          v-for='participant in participants' :key='participant.id'

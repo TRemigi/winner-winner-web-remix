@@ -17,11 +17,13 @@ class CreateGiveawaysTable extends Migration
             $table->id();
             $table->timestamps();
             $table->text('name');
+            $table->unsignedBigInteger('user_id');
             $table->boolean('complete')->default(false);
 
-            // $table->foreign('participant_id')
-            //     ->references('id')
-            //     ->on('participants');
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
         });
     }
 
