@@ -107,7 +107,7 @@ class GiveawayController extends Controller
         return request()->validate([
             'name' => 'required',
             'complete' => 'nullable|boolean',
-            'user_id' => 'required'
+            'user_id' => 'nullable'
         ]);
     }
 }

@@ -42,9 +42,6 @@
                     <button v-on:click="editParticipant(participant.id)" :class="participant.is_winner == true ? 'btn btn-outline-dark cust-btn-secondary p-2' : 'btn btn-outline-primary cust-btn-secondary p-2'">
                         Edit
                     </button>
-                    <button v-on:click="deleteParticipant(participant.id)" class="btn btn-danger cust-btn-delete ml-2 p-2">
-                        Delete
-                    </button>
                 </div>
             </div>
         </div>
@@ -108,6 +105,7 @@
                 axios.put(`/giveaways/${this.giveaway.id}`, {
                     name: this.giveaway.name,
                     complete: true,
+                    user_id: this.giveaway.user_id
                     })
                 .then(response => window.location = `/giveaways/${response.data.id}`);
             },

@@ -2140,6 +2140,11 @@ __webpack_require__.r(__webpack_exports__);
     addParticipant: function addParticipant() {
       window.location = "/giveaways/".concat(this.giveaway.id, "/participants/create");
     },
+    deleteParticipant: function deleteParticipant(participantId) {
+      axios["delete"]("/giveaways/".concat(this.giveaway.id, "/participants/").concat(participantId)).then(function (response) {
+        return window.location = "/giveaways/".concat(response.data.giveaway_id);
+      });
+    },
     chooseWinner: function chooseWinner() {
       var winner = this.participants[Math.floor(Math.random() * this.participants.length)];
       axios.put("/giveaways/".concat(this.giveaway.id, "/participants/").concat(winner.id), {
@@ -2161,11 +2166,6 @@ __webpack_require__.r(__webpack_exports__);
     deleteGiveaway: function deleteGiveaway() {
       axios["delete"]("/giveaways/".concat(this.giveaway.id)).then(function (response) {
         return window.location = '/giveaways';
-      });
-    },
-    deleteParticipant: function deleteParticipant() {
-      axios["delete"]("/giveaways/".concat(this.giveaway.id, "/participants/").concat(this.participant.id)).then(function (response) {
-        return window.location = "/giveaways/".concat(response.data.giveaway_id);
       });
     }
   }
@@ -38912,7 +38912,11 @@ var render = function() {
                           {
                             staticClass:
                               "btn btn-danger cust-btn-delete ml-2 p-2",
-                            on: { click: _vm.deleteParticipant }
+                            on: {
+                              click: function($event) {
+                                return _vm.deleteParticipant(participant.id)
+                              }
+                            }
                           },
                           [
                             _vm._v(
