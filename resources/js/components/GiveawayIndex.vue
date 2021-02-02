@@ -15,7 +15,7 @@
         </div>
         <div
          v-for='giveaway in giveaways' :key='giveaway.id'
-         class="card shadow mt-2 p-2 h-20">
+         class="card shadow mt-4 p-2 h-20">
          <div class="row">
             <div class="col-8 mr-auto d-flex align-items-center">
                 <h3 class="m-0">{{giveaway.name}}</h3>
@@ -35,12 +35,13 @@
         props: ['giveaways'],
         mounted () {
             // Do something useful with the data in the template
-            console.dir(this.giveaways)
         },
         methods: {
+            // go to giveaway show route
             showGiveaway: function (id) {
                 window.location = `/giveaways/${id}`;
             },
+            // go to giveaway create route
             createGiveaway: function () {
                 window.location = '/giveaways/create';
             }

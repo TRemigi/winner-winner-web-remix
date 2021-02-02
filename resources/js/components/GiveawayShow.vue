@@ -5,7 +5,7 @@
             <div>
                 <h2>COMPLETED</h2>
             </div>
-            <button v-on:click="deleteGiveaway" class="btn shadow btn-danger cust-btn-delete ml-2 p-2">
+            <button v-on:click="deleteGiveaway" class="btn shadow btn-outline-danger cust-btn-delete ml-2 p-2">
                 Delete Giveaway
             </button>
         </div>
@@ -35,14 +35,14 @@
          v-for='participant in participants' :key='participant.id'
          :class="participant.is_winner == true ? 'card shadow mt-4 p-2 h-20 bg-success' : 'card shadow mt-4 p-2 h-20'">
             <div :class="participant.is_winner == true ? 'row warning is-winner' : 'row'">
-                <div class="col-6 mr-auto d-flex align-items-center">
+                <div class="col-2 mr-auto d-flex align-items-center">
                     <h3 class="m-0">{{participant.insta_name}}</h3>
                 </div>
-                <div v-if="participant.is_winner == true" class="col-3 d-flex align-items-center">
+                <div v-if="participant.is_winner == true" class="col-5 d-flex align-items-center">
                     <h3 class="m-0">WINNER</h3>
                 </div>
-                <div v-if="isComplete == false & participant.is_winner == false" class="col-3 d-flex justify-content-end">
-                    <button v-on:click="editParticipant(participant.id)" :class="participant.is_winner == true ? 'btn shadow btn-outline-dark cust-btn-secondary p-2' : 'btn shadow btn-outline-primary cust-btn-secondary p-2'">
+                <div v-if="isComplete == false & participant.is_winner == false" class="col-2 d-flex justify-content-end">
+                    <button v-on:click="editParticipant(participant.id)" :class="participant.is_winner == true ? 'btn shadow btn-outline-dark p-2' : 'btn shadow btn-outline-primary p-2'">
                         Edit
                     </button>
                 </div>
@@ -50,7 +50,7 @@
         </div>
         <div v-if="isComplete == false" class="row mt-4">
             <div class="col-12 d-flex justify-content-center">
-                <button v-on:click="addParticipant()" class="btn shadow btn-outline-primary cust-btn-secondary p-2">
+                <button v-on:click="addParticipant()" class="btn shadow btn-outline-primary p-2">
                     Add Participants
                 </button>
             </div>
@@ -82,19 +82,19 @@
             }
         },
         methods: {
+            // go to giveaway edit route
             editGiveaway: function () {
                 window.location = `/giveaways/${this.giveaway.id}/edit`;
             },
+            // go to participant edit route
             editParticipant: function (participantId) {
                 window.location = `/giveaways/${this.giveaway.id}/participants/${participantId}/edit`;
             },
+            // go to participant create route
             addParticipant: function () {
                 window.location = `/giveaways/${this.giveaway.id}/participants/create`
             },
-            deleteParticipant: function (participantId) {
-                axios.delete(`/giveaways/${this.giveaway.id}/participants/${participantId}`)
-                .then(response => window.location = `/giveaways/${response.data.giveaway_id}`);
-            },
+            // get a random index from array of participants and make a put request updating the "is_winner" column
             chooseWinner: function () {
                 let winner = this.participants[Math.floor(Math.random()*this.participants.length)];
                 axios.put(`/giveaways/${this.giveaway.id}/participants/${winner.id}`, {
@@ -105,6 +105,7 @@
                     })
                 .then(response => window.location = `/giveaways/${response.data.giveaway_id}`);
             },
+            // make a put request updating this giveaway as complete
             completeGiveaway: function () {
                 axios.put(`/giveaways/${this.giveaway.id}`, {
                     name: this.giveaway.name,
@@ -113,6 +114,7 @@
                     })
                 .then(response => window.location = `/giveaways/${response.data.id}`);
             },
+            // make a delete request, wait for response, then go to giveaways index
             deleteGiveaway: function () {
                 axios.delete(`/giveaways/${this.giveaway.id}`)
                 .then(response => window.location = '/giveaways');

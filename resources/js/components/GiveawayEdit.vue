@@ -12,7 +12,7 @@
             <button type="submit" class="btn btn-outline-primary shadow">Submit</button>
         </form>
         <div class="row m-1 mt-5">
-            <button v-on:click="deleteGiveaway" class="btn btn-danger shadow p-2">
+            <button v-on:click="deleteGiveaway" class="btn btn-outline-danger shadow p-2">
                 Delete Giveaway
             </button>
         </div>
@@ -28,10 +28,12 @@
         },
         props: ['giveaway', 'user'],
         methods: {
+            // send form data to giveaways put route
             editGiveaway: function () {
                 axios.put(`/giveaways/${this.giveaway.id}`, {name: this.giveawayName, user_id: this.user})
                 .then(response => window.location = `/giveaways/${response.data.id}`);
             },
+            // send delete request to giveaways delete route, wait for response, then go to giveaways index
             deleteGiveaway: function () {
                 axios.delete(`/giveaways/${this.giveaway.id}`)
                 .then(response => window.location = '/giveaways');

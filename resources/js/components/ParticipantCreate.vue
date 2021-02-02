@@ -26,6 +26,7 @@
             }
         },
         methods: {
+            // send post request with form data to participant store route
             createNewParticipant: function () {
                 axios.post(`/giveaways/${this.giveaway.id}/participants`, {
                     insta_name: this.participantName,
@@ -34,6 +35,7 @@
                     })
                     .then(response => window.location = `/giveaways/${response.data.giveaway_id}`);
             },
+            // go back to related giveaway page
             backToGiveaway: function () {
                 window.location = `/giveaways/${this.giveaway.id}`;
             }

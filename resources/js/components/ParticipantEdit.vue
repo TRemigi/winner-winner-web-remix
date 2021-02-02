@@ -31,6 +31,7 @@
             }
         },
         methods: {
+            // make a put request to participant update route
             editParticipant: function () {
                 axios.put(`/giveaways/${this.giveaway.id}/participants/${this.participant.id}`, {
                     insta_name: this.participantName,
@@ -39,9 +40,11 @@
                     })
                 .then(response => window.location = `/giveaways/${response.data.giveaway_id}`);
             },
+            // go back to related giveaway page
             backToGiveaway: function () {
                 window.location = `/giveaways/${this.giveaway.id}`;
             },
+            // send delete request to participant delete route, then go back to related giveaway page
             deleteParticipant: function () {
                 axios.delete(`/giveaways/${this.giveaway.id}/participants/${this.participant.id}`)
                 .then(response => window.location = `/giveaways/${response.data.giveaway_id}`);

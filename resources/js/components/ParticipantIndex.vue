@@ -15,19 +15,19 @@
         </div>
         <div
          v-for='participant in participants' :key='participant.id'
-         :class="participant.is_winner == true ? 'card shadow bg-success mt-2 p-2 h-20' : 'card shadow mt-2 p-2 h-20'">
+         :class="participant.is_winner == true ? 'card shadow bg-success mt-4 p-2 h-20' : 'card shadow mt-4 p-2 h-20'">
          <div class="row">
-            <div class="col-4 mr-auto d-flex align-items-center">
+            <div class="col-3 mr-auto d-flex align-items-center">
                 <h3 class="m-0">{{participant.insta_name}}</h3>
             </div>
-            <div v-if="participant.is_winner == true" class="col-4 mr-auto d-flex align-items-center">
+            <div v-if="participant.is_winner == true" class="col-3 mr-auto d-flex align-items-center">
                 <h3 class="m-0">WINNER</h3>
             </div>
-            <div class="col-4 d-flex justify-content-end">
-                <button v-on:click="showGiveaway(participant.giveaway_id)" :class="participant.is_winner == true ? 'btn shadow btn-outline-dark cust-btn-secondary p-2' : 'btn shadow btn-outline-primary cust-btn-secondary p-2'">
+            <div class="col-6 d-flex justify-content-end">
+                <button v-on:click="showGiveaway(participant.giveaway_id)" :class="participant.is_winner == true ? 'btn btn-outline-primary p-2' : 'btn shadow btn-outline-primary p-2'">
                     View Giveaway
                 </button>
-                <button v-on:click="editParticipant(participant.giveaway_id, participant.id)" :class="participant.is_winner == true ? 'btn shadow btn-outline-dark cust-btn-secondary ml-2 p-2' : 'btn shadow btn-outline-primary cust-btn-secondary ml-2 p-2'">
+                <button v-if="participant.is_winner == false" v-on:click="editParticipant(participant.giveaway_id, participant.id)" :class="participant.is_winner == true ? 'btn shadow btn-outline-dark ml-2 p-2' : 'btn shadow btn-outline-primary ml-2 p-2'">
                     Edit
                 </button>
             </div>
@@ -44,9 +44,11 @@
             
         },
         methods: {
+            // go to related giveaway page
             showGiveaway: function (giveawayId) {
                 window.location = `/giveaways/${giveawayId}`;
             },
+            // show page for editing this participant
             editParticipant: function (giveawayId, participantId) {
                 window.location = `/giveaways/${giveawayId}/participants/${participantId}/edit`;
             },

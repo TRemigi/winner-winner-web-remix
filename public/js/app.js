@@ -38644,7 +38644,7 @@ var render = function() {
       _c(
         "button",
         {
-          staticClass: "btn btn-danger shadow p-2",
+          staticClass: "btn btn-outline-danger shadow p-2",
           on: { click: _vm.deleteGiveaway }
         },
         [_vm._v("\n            Delete Giveaway\n        ")]
@@ -38707,7 +38707,7 @@ var render = function() {
       _vm._l(_vm.giveaways, function(giveaway) {
         return _c(
           "div",
-          { key: giveaway.id, staticClass: "card shadow mt-2 p-2 h-20" },
+          { key: giveaway.id, staticClass: "card shadow mt-4 p-2 h-20" },
           [
             _c("div", { staticClass: "row" }, [
               _c(
@@ -38791,7 +38791,8 @@ var render = function() {
             _c(
               "button",
               {
-                staticClass: "btn shadow btn-danger cust-btn-delete ml-2 p-2",
+                staticClass:
+                  "btn shadow btn-outline-danger cust-btn-delete ml-2 p-2",
                 on: { click: _vm.deleteGiveaway }
               },
               [_vm._v("\n            Delete Giveaway\n        ")]
@@ -38879,7 +38880,7 @@ var render = function() {
               [
                 _c(
                   "div",
-                  { staticClass: "col-6 mr-auto d-flex align-items-center" },
+                  { staticClass: "col-2 mr-auto d-flex align-items-center" },
                   [
                     _c("h3", { staticClass: "m-0" }, [
                       _vm._v(_vm._s(participant.insta_name))
@@ -38890,7 +38891,7 @@ var render = function() {
                 participant.is_winner == true
                   ? _c(
                       "div",
-                      { staticClass: "col-3 d-flex align-items-center" },
+                      { staticClass: "col-5 d-flex align-items-center" },
                       [_c("h3", { staticClass: "m-0" }, [_vm._v("WINNER")])]
                     )
                   : _vm._e(),
@@ -38898,15 +38899,15 @@ var render = function() {
                 (_vm.isComplete == false) & (participant.is_winner == false)
                   ? _c(
                       "div",
-                      { staticClass: "col-3 d-flex justify-content-end" },
+                      { staticClass: "col-2 d-flex justify-content-end" },
                       [
                         _c(
                           "button",
                           {
                             class:
                               participant.is_winner == true
-                                ? "btn shadow btn-outline-dark cust-btn-secondary p-2"
-                                : "btn shadow btn-outline-primary cust-btn-secondary p-2",
+                                ? "btn shadow btn-outline-dark p-2"
+                                : "btn shadow btn-outline-primary p-2",
                             on: {
                               click: function($event) {
                                 return _vm.editParticipant(participant.id)
@@ -38934,8 +38935,7 @@ var render = function() {
               _c(
                 "button",
                 {
-                  staticClass:
-                    "btn shadow btn-outline-primary cust-btn-secondary p-2",
+                  staticClass: "btn shadow btn-outline-primary p-2",
                   on: {
                     click: function($event) {
                       return _vm.addParticipant()
@@ -39255,14 +39255,14 @@ var render = function() {
             key: participant.id,
             class:
               participant.is_winner == true
-                ? "card shadow bg-success mt-2 p-2 h-20"
-                : "card shadow mt-2 p-2 h-20"
+                ? "card shadow bg-success mt-4 p-2 h-20"
+                : "card shadow mt-4 p-2 h-20"
           },
           [
             _c("div", { staticClass: "row" }, [
               _c(
                 "div",
-                { staticClass: "col-4 mr-auto d-flex align-items-center" },
+                { staticClass: "col-3 mr-auto d-flex align-items-center" },
                 [
                   _c("h3", { staticClass: "m-0" }, [
                     _vm._v(_vm._s(participant.insta_name))
@@ -39273,19 +39273,19 @@ var render = function() {
               participant.is_winner == true
                 ? _c(
                     "div",
-                    { staticClass: "col-4 mr-auto d-flex align-items-center" },
+                    { staticClass: "col-3 mr-auto d-flex align-items-center" },
                     [_c("h3", { staticClass: "m-0" }, [_vm._v("WINNER")])]
                   )
                 : _vm._e(),
               _vm._v(" "),
-              _c("div", { staticClass: "col-4 d-flex justify-content-end" }, [
+              _c("div", { staticClass: "col-6 d-flex justify-content-end" }, [
                 _c(
                   "button",
                   {
                     class:
                       participant.is_winner == true
-                        ? "btn shadow btn-outline-dark cust-btn-secondary p-2"
-                        : "btn shadow btn-outline-primary cust-btn-secondary p-2",
+                        ? "btn btn-outline-primary p-2"
+                        : "btn shadow btn-outline-primary p-2",
                     on: {
                       click: function($event) {
                         return _vm.showGiveaway(participant.giveaway_id)
@@ -39295,24 +39295,26 @@ var render = function() {
                   [_vm._v("\n                View Giveaway\n            ")]
                 ),
                 _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    class:
-                      participant.is_winner == true
-                        ? "btn shadow btn-outline-dark cust-btn-secondary ml-2 p-2"
-                        : "btn shadow btn-outline-primary cust-btn-secondary ml-2 p-2",
-                    on: {
-                      click: function($event) {
-                        return _vm.editParticipant(
-                          participant.giveaway_id,
-                          participant.id
-                        )
-                      }
-                    }
-                  },
-                  [_vm._v("\n                Edit\n            ")]
-                )
+                participant.is_winner == false
+                  ? _c(
+                      "button",
+                      {
+                        class:
+                          participant.is_winner == true
+                            ? "btn shadow btn-outline-dark ml-2 p-2"
+                            : "btn shadow btn-outline-primary ml-2 p-2",
+                        on: {
+                          click: function($event) {
+                            return _vm.editParticipant(
+                              participant.giveaway_id,
+                              participant.id
+                            )
+                          }
+                        }
+                      },
+                      [_vm._v("\n                Edit\n            ")]
+                    )
+                  : _vm._e()
               ])
             ])
           ]

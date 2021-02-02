@@ -4,11 +4,10 @@
 $enable-shadows: "true";
 
 $primary: #0fa79f;
-$success: #1ac94e;
+$success: #00ff4c44;
+$danger: #eb2c6b;
 
-$box-shadow: 5px 5px 10px #a1a3a4, -5px -5px 10px #ffffff;
-
-$btn-focus-box-shadow: inset 5px 5px 10px #a1a3a4, inset -5px -5px 10px #ffffff;
+$box-shadow: 6px 6px 12px #bcbcbc, -6px -6px 12px #ffffff;
 
 $input-btn-focus-box-shadow: inset 5px 5px 7px #eef0f2,
     inset -5px -5px 7px #ffffff;
@@ -16,11 +15,10 @@ $input-btn-focus-box-shadow: inset 5px 5px 7px #eef0f2,
 $btn-active-box-shadow: inset 14px 14px 27px #d3d5d6,
     inset -14px -14px 27px #ffffff;
 
+$btn-border-radius: 50px;
+
 // Variables
 @import "variables";
-
-// Allows for customizing button radius independently from global border radius
-$btn-border-radius: 50px;
 
 // Bootstrap
 @import "~bootstrap/scss/bootstrap";

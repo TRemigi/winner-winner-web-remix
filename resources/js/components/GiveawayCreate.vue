@@ -24,6 +24,7 @@
             }
         },
         methods: {
+            // send form data to givaways post route
             createNewGiveaway: function () {
                 axios.post('/giveaways', {name: this.giveawayName, user_id: this.user})
                 .then(response => window.location = `/giveaways/${response.data.id}`);
