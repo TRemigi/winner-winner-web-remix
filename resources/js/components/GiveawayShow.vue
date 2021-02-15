@@ -31,6 +31,13 @@
                 </div>
             </div>
         </div>
+        <div v-if="isComplete == false" class="row mt-4">
+            <div class="col-12 d-flex justify-content-center">
+                <button v-on:click="addParticipant()" class="btn shadow btn-outline-primary p-2">
+                    Add Participants
+                </button>
+            </div>
+        </div>
         <div
          v-for='participant in participants' :key='participant.id'
          :class="participant.is_winner == true ? 'card shadow mt-4 p-2 h-20 bg-success' : 'card shadow mt-4 p-2 h-20'">
@@ -46,13 +53,6 @@
                         Edit
                     </button>
                 </div>
-            </div>
-        </div>
-        <div v-if="isComplete == false" class="row mt-4">
-            <div class="col-12 d-flex justify-content-center">
-                <button v-on:click="addParticipant()" class="btn shadow btn-outline-primary p-2">
-                    Add Participants
-                </button>
             </div>
         </div>
     </div>
